@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Brisbane SEO Pro 😎
-Plugin URI: http://brisbaneagency.com/
+Plugin URI: https://github.com/brisbaneagency/brisbane-seo-pro/
 Description: An ultra-lightweight custom SEO plugin using Rush Custom Fields.
 Version: 3.0
 Author: Brisbane Agency
@@ -66,7 +66,10 @@ add_action('template_redirect', function() {
 }, 0);
 
 
-
+add_filter('auto_update_plugin', function($update, $item) {
+    if ($item->slug === 'brisbane-seo-pro') return true;
+    return $update;
+}, 20, 2);
 
 add_action('plugins_loaded', function() {
     if (class_exists('WPSEO_Admin_Columns')) {
