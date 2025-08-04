@@ -3,7 +3,7 @@
 Plugin Name: Brisbane SEO Pro 😎
 Plugin URI: http://brisbaneagency.com/
 Description: An ultra-lightweight custom SEO plugin using Rush Custom Fields.
-Version: 2.6
+Version: 3.0
 Author: Brisbane Agency
 Author URI: http://brisbaneagency.com/
 License: GPLv3
@@ -84,3 +84,13 @@ add_action('plugins_loaded', function() {
         }
     }
 });
+
+require_once plugin_dir_path(__FILE__) . 'plugin-update-checker/plugin-update-checker.php';
+
+$updateChecker = Puc_v4_Factory::buildUpdateChecker(
+    'https://github.com/brisbaneagency/brisbane-seo-pro/',
+    __FILE__,
+    'brisbane-seo-pro'
+);
+
+$updateChecker->getVcs()->enableReleaseAssets();
